@@ -2,9 +2,16 @@
 # Write your code below:
 
 def is_budget_sufficient(one_way_km, km_per_liter, price_per_liter, budget):
-    # TODO: Implement this function
-    # Calculate round trip cost and checks if within budget
-    pass
+    
+    round_trip_costs = (((one_way_km * 2) / km_per_liter) * price_per_liter)
+    if (budget >= round_trip_costs):
+        away = "Sufficient"
+    else:
+        away = "Insufficient"
+    return away
 
 # Test your code here
-print("Testing Road Trip Budgeter...")
+result = is_budget_sufficient(20,10,20,100)
+print(f"Testing Road Trip Budgeter: {result}")
+
+
