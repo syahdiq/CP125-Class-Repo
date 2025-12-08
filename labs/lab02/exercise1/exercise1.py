@@ -5,9 +5,9 @@ def is_budget_sufficient(one_way_km, km_per_liter, price_per_liter, budget):
     
     round_trip_costs = (((one_way_km * 2) / km_per_liter) * price_per_liter)
     if (budget >= round_trip_costs):
-        away = "Sufficient"
+        away = True
     else:
-        away = "Insufficient"
+        away = False
     return away
 
 # Test your code here
