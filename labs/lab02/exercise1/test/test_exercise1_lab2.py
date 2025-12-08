@@ -2,7 +2,7 @@ import pytest
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from exercise import is_budget_sufficient
+from exercise1 import is_budget_sufficient
 
 def test_budget_exact_match():
     # 100km one way = 200km round trip. 10km/l -> 20 liters. RM2.00/l -> RM40.00. Budget 40. True

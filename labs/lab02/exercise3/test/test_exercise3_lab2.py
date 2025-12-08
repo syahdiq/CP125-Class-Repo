@@ -2,7 +2,7 @@ import pytest
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from exercise import validate_entry
+from exercise3 import validate_entry
 
 def test_director_success():
     assert validate_entry("Director", 1122) == True

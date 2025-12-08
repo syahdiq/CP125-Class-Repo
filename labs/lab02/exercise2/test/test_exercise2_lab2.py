@@ -2,7 +2,7 @@ import pytest
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from exercise import calculate_event_cost
+from exercise2 import calculate_event_cost
 
 def test_exact_tent_capacity():
     # 12 people, cap 4 -> 3 tents. Price 100/tent. 300. Food 12*10=120. Total 420.
