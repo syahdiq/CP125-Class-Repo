@@ -48,4 +48,4 @@ def test_find_station_exists():
 
 def test_find_station_not_exists():
     stations = ["Central", "Marina", "Bukit"]
-    assert find_station(stations, "Unknown") is None
+    assert find_station(stations, "Unknown") == -1
