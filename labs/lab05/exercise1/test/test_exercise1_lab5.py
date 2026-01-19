@@ -41,7 +41,6 @@ def test_large_jumps_forward():
     assert was_backward_detected(path) == False
 
 def test_one_coordinate_backward_one_forward():
-    # x increases, y decreases -> backward
     path = ((5, 5, 5), (10, 4, 10))
     assert was_backward_detected(path) == True
 

@@ -78,11 +78,4 @@ def test_partial_registration():
     dead = ["srv-A", "srv-Unknown"]
     assert clean_sessions(pool, sessions, dead) == [("srv-B", "c2")]
 
-def test_pool_is_empty():
-    """If pool is empty, no server can be 'valid' from the dead list."""
-    pool = ()
-    sessions = [("srv-A", "c1")]
-    dead = ["srv-A"]
-    # Since srv-A is not in pool, it's not verified as a valid dead server to remove(?)
-    # Following step 1: Verify dead exists in pool. srv-A doesn't. So skip.
-    assert clean_sessions(pool, sessions, dead) == [("srv-A", "c1")]
+

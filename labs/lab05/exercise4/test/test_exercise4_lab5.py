@@ -44,7 +44,6 @@ def test_two_values_boundary():
 def test_multiple_outliers_removal():
     """Verify that values significantly above the group are removed."""
     query_times = [10, 11, 12, 100, 110]
-    # Mean 48.6, Std Dev ~47. Limit ~95. 100 and 110 should be removed.
     result = filter_query_times(query_times)
     assert 100 not in result
     assert 110 not in result

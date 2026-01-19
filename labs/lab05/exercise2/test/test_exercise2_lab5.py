@@ -21,13 +21,11 @@ def test_no_drops_stable():
     assert find_largest_drop(temps) == 0.0
 
 def test_spike_up_then_down():
-    # Jump up 10, jump down 5. Largest drop is 5.
     temps = (20.0, 30.0, 25.0)
     assert find_largest_drop(temps) == 5.0
 
 def test_multiple_equal_drops():
     temps = (30.0, 20.0, 25.0, 15.0)
-    # Both drops are 10.0
     assert find_largest_drop(temps) == 10.0
 
 def test_very_small_drop():

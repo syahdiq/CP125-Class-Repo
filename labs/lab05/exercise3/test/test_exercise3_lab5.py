@@ -31,7 +31,6 @@ def test_consistent_latencies():
 def test_unstable_connection():
     """Multiple large jumps, find the single largest."""
     traceroute = ((1, 10), (2, 30), (3, 40), (4, 90), (5, 100))
-    # Jumps: 20, 10, 50, 10. Largest is 50 starting at index 2.
     assert find_bottleneck_index(traceroute) == 2
 
 def test_minimum_hops():
@@ -56,17 +55,14 @@ def test_zero_latency_start():
 def test_large_number_handling():
     """Handling very large latency values."""
     traceroute = ((1, 1000), (2, 1005), (3, 5000), (4, 5010))
-    # Jumps: 5, 3995, 10
     assert find_bottleneck_index(traceroute) == 1
 
 def test_identical_latencies():
     """No jumps at all (all jumps are 0)."""
     traceroute = ((1, 50), (2, 50), (3, 50), (4, 50))
-    # Max jump is 0, first index is 0.
     assert find_bottleneck_index(traceroute) == 0
 
 def test_alternating_spikes():
     """Large increase followed by large decrease."""
     traceroute = ((1, 10), (2, 110), (3, 210), (4, 110), (5, 10))
-    # Jumps: 100, 100, 100, 100. First one is index 0.
     assert find_bottleneck_index(traceroute) == 0
