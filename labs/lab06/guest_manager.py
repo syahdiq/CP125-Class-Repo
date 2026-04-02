@@ -1,4 +1,4 @@
-guests = {"Alice", "Bob"}
+#guests = {"Alice", "Bob"}
 
 # 1. Adding items
 guests.add("Charlie")
