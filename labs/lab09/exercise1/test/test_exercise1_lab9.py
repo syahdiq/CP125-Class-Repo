@@ -60,3 +60,11 @@ def test_math_average_range():
 def test_highest_math_student_type():
     result = explore_data("../data/students.csv")
     assert isinstance(result["highest_math_student"], str)
+
+import pandas as pd
+
+df = pd.DataFrame({
+    'Name': ["Ali", "Sara"],
+    'Score': [85, 92]
+})
+print(df)
