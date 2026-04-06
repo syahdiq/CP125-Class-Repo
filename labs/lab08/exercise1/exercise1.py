@@ -7,7 +7,12 @@ def filter_passing_scores(input_file, output_file):
     lines = f.readlines()
     f.close()
 
+
     passing_count = 0
+
+        input_file: path to input file (student_id and score on alternating lines)
+        output_file: path to output file
+
 
     # Write
     f = open(output_file, "w")

@@ -25,7 +25,7 @@ def create_test_file(content):
 
 def test_basic_filtering():
     """Test basic filtering of passing scores"""
-    temp_dir, input_file, output_file = create_test_file("S001 85\nS002 75\nS003 90\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n85\nS002\n75\nS003\n90\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 2
@@ -41,7 +41,7 @@ def test_basic_filtering():
 
 def test_all_passing():
     """Test when all students pass"""
-    temp_dir, input_file, output_file = create_test_file("S001 85\nS002 90\nS003 95\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n85\nS002\n90\nS003\n95\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 3
@@ -51,7 +51,7 @@ def test_all_passing():
 
 def test_none_passing():
     """Test when no students pass"""
-    temp_dir, input_file, output_file = create_test_file("S001 75\nS002 70\nS003 65\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n75\nS002\n70\nS003\n65\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 0
@@ -65,7 +65,7 @@ def test_none_passing():
 
 def test_exactly_80():
     """Test boundary case with score exactly 80"""
-    temp_dir, input_file, output_file = create_test_file("S001 80\nS002 79\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n80\nS002\n79\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 1
@@ -80,7 +80,7 @@ def test_exactly_80():
 
 def test_single_student_passing():
     """Test with single passing student"""
-    temp_dir, input_file, output_file = create_test_file("S001 95\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n95\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 1
@@ -90,7 +90,7 @@ def test_single_student_passing():
 
 def test_single_student_failing():
     """Test with single failing student"""
-    temp_dir, input_file, output_file = create_test_file("S001 70\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n70\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 0
@@ -100,7 +100,11 @@ def test_single_student_failing():
 
 def test_large_dataset():
     """Test with larger dataset"""
-    content = "\n".join([f"S{i:03d} {60 + i % 40}" for i in range(1, 51)])
+    lines = []
+    for i in range(1, 51):
+        lines.append(f"S{i:03d}")
+        lines.append(str(60 + i % 40))
+    content = "\n".join(lines) + "\n"
     temp_dir, input_file, output_file = create_test_file(content)
     result = filter_passing_scores(input_file, output_file)
 
@@ -112,7 +116,7 @@ def test_large_dataset():
 
 def test_perfect_scores():
     """Test with perfect scores"""
-    temp_dir, input_file, output_file = create_test_file("S001 100\nS002 100\nS003 100\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n100\nS002\n100\nS003\n100\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 3
@@ -122,7 +126,7 @@ def test_perfect_scores():
 
 def test_mixed_scores():
     """Test with mixed passing and failing scores"""
-    temp_dir, input_file, output_file = create_test_file("S001 95\nS002 45\nS003 82\nS004 76\nS005 88\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n95\nS002\n45\nS003\n82\nS004\n76\nS005\n88\n")
     result = filter_passing_scores(input_file, output_file)
 
     assert result == 3
@@ -140,7 +144,7 @@ def test_mixed_scores():
 
 def test_output_format():
     """Test that output has correct format"""
-    temp_dir, input_file, output_file = create_test_file("S001 85\nS002 90\n")
+    temp_dir, input_file, output_file = create_test_file("S001\n85\nS002\n90\n")
     result = filter_passing_scores(input_file, output_file)
 
     with open(output_file, "r") as f:
